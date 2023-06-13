@@ -1,26 +1,24 @@
+require('dotenv').config();
 const express = require('express');
-let app = express();
+const cors = require('cors');
+const path = require('path');
+const db = require('../database/index');
+const routes = require('./routes');
+const { getReposByUsername } = require('../helpers/github.js');
+const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors());
+app.use(express.static(path.join(__dirname, '../client/dist')));
 
-// TODO - your code here!
-// Set up static file service for files in the `client/dist` directory.
-// Webpack is configured to generate files in that directory and
-// this server must serve those files when requested.
+console.log(process.env.TOKEN);
 
-app.post('/repos', function (req, res) {
-  // TODO - your code here!
-  // This route should take the github username provided
-  // and get the repo information from the github API, then
-  // save the repo information in the database
-});
+app.use('/repos', routes(db));
 
-app.get('/repos', function (req, res) {
-  // TODO - your code here!
-  // This route should send back the top 25 repos
-});
 
 let port = 1128;
 
-app.listen(port, function() {
+app.listen(port, function () {
   console.log(`listening on port ${port}`);
 });
 
