@@ -6,7 +6,6 @@ export default function Loading() {
 
   React.useEffect(() => {
     intrvl = setInterval(() => {
-      console.log('loading', text);
       setText((t) => {
         if (t.length === 100)
           return '.'

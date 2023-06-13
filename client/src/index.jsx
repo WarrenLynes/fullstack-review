@@ -34,7 +34,6 @@ const App = () => {
         setRepos(x);
         setLoading(false);
       }).catch((err) => {
-        console.error(err.responseText);
         setLoading(false);
       });
   }
