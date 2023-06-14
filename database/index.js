@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 mongoose.connect(
-  'mongodb://localhost/fetcher',
+  // 'mongodb://localhost/fetcher',
+  `mongodb+srv://shay:${process.env.MONGODBPASSWORD}@fullstackreview.eixgohr.mongodb.net/?retryWrites=true&w=majority`,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -50,23 +51,6 @@ let userSchema = mongoose.Schema({
 
 let User = mongoose.model('User', userSchema);
 let Repo = mongoose.model('Repo', repoSchema);
-
-// let save = async (/* TODO */) => {
-//   const newUser = new User(
-//     {
-//       username: 'warrenlynes'
-//     }
-//   );
-//   const x = await newUser.save();
-//   console.log(x);
-
-//   let newRepo = new Repo({ name: 'test game', url: '/url', owner: newUser._id })
-//   await newRepo.save();
-//   newUser.repos.push(newRepo);
-//   await newUser.save();
-// }
-
-
 
 module.exports = {
   User, Repo

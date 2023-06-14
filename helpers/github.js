@@ -1,5 +1,4 @@
 const axios = require('axios');
-const config = require('../config.js');
 
 let getReposByUsername = (username) => {
   let options = {

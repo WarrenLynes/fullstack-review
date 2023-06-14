@@ -37,7 +37,7 @@ module.exports = function (db) {
     });
   }
 
-  async function createRepo(repo) {
+  async function createRepo(repo, indx) {
     return db.Repo.create({
       name: repo.name,
       github_id: repo.id,
@@ -47,7 +47,7 @@ module.exports = function (db) {
       watchers_count: Math.floor(Math.random() * 100),
       forks_count: repo.forks_count,
       owner: user._id
-    })
+    }).save()
   }
 
   router.post('/', async function (req, res) {
@@ -66,7 +66,16 @@ module.exports = function (db) {
       .then((data) =>
         Promise.all(
           data.map((repo, indx) =>
-            createRepo(repo)
+            db.Repo.create({
+              name: repo.name,
+              github_id: repo.id,
+              url: repo.html_url,
+              description: repo.description,
+              stargazers_count: indx + 1,
+              watchers_count: Math.floor(Math.random() * 100),
+              forks_count: repo.forks_count,
+              owner: user._id
+            })
               .then((x) => user.repos.push(x))
               .catch(e => console.log(e.code))
           )
