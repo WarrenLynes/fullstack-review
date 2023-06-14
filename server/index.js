@@ -16,7 +16,7 @@ console.log(process.env.TOKEN);
 app.use('/repos', routes(db));
 
 
-let port = 1128;
+let port = process.env.PORT;
 
 app.listen(port, function () {
   console.log(`listening on port ${port}`);
