@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "react-dev": "webpack --mode development --watch",
+    "react-dev": "webpack --mode production",
     "server-dev": "npx nodemon server/index.js"
   },
   "author": "Beth Johnson",
