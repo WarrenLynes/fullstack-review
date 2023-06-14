@@ -11,8 +11,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
-console.log(process.env.TOKEN);
-
 app.use('/repos', routes(db));
 
 

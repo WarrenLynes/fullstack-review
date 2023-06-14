@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm install && npx webpack --mode production && npm run server-dev",
+    "start": "npx webpack --mode production && npm run server-dev",
     "react-dev": "webpack --mode production",
     "server-dev": "node server/index.js"
   },

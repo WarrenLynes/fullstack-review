@@ -71,8 +71,8 @@ module.exports = function (db) {
               github_id: repo.id,
               url: repo.html_url,
               description: repo.description,
-              stargazers_count: indx + 1,
-              watchers_count: Math.floor(Math.random() * 100),
+              stargazers_count: repo.stargazers_count,
+              watchers_count: repo.watchers_count,
               forks_count: repo.forks_count,
               owner: user._id
             })
