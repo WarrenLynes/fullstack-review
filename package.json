@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "npm i -g webpack && npm run react-dev && npm run server-dev",
     "react-dev": "webpack --mode production",
     "server-dev": "npx nodemon server/index.js"
   },
